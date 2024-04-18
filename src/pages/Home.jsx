@@ -1,72 +1,91 @@
 import { useState } from "react";
 import axios from "axios";
+import Weather from "./Weather";
 
 const Home = () => {
-  const [searchText, setSearchText] = useState("");
+  const [city, setCity] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedCity, setSelectedCity] = useState(null);
+  const [isShowHome, setIsShowHome] = useState(false);
 
-  const handleInputChange = async (event) => {
-    let inputText = event.target.value;
-    if (inputText.length > 0) {
-      inputText = inputText.charAt(0).toUpperCase() + inputText.slice(1);
-    }
-    setSearchText(inputText);
+  const API_KEY = "07cf93b699f8470ca8d131206242903";
+  const API_URL = "http://api.weatherapi.com/v1/search.json";
 
-    const apiKey = "07cf93b699f8470ca8d131206242903";
-    const autocompleteUrl = `http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${inputText}`;
+  const handleChange = (event) => {
+    let { value } = event.target;
 
-    try {
-      const response = await axios.get(autocompleteUrl);
-      const suggestions = response.data.map((result) => result.name);
-      setSuggestions(suggestions);
-    } catch (error) {
-      console.error("Failed to fetch autocomplete suggestions:", error);
+    value = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+
+    setCity(value);
+
+    if (value.trim() !== "") {
+      setLoading(true);
+
+      axios
+        .get(`${API_URL}?key=${API_KEY}&q=${value}`)
+        .then((response) => {
+          setSuggestions(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching suggestions:", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
       setSuggestions([]);
     }
   };
 
-  const handleSuggestionClick = (suggest) => {
-    setSearchText(suggest);
-    setSuggestions([]);
-  };
-
-  const handleSearch = () => {
-    if (!searchText) {
-      console.log("Please enter a city name!");
-      return;
-    }
-
-    console.log("Selected City:", searchText);
+  const handleSelectCity = (selectedCity) => {
+    console.log("Selected city:", selectedCity);
+    setSelectedCity(selectedCity);
+    setIsShowHome(true);
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleSearch();
-      setSuggestions([]);
+    if (event.key === "Enter" && suggestions.length > 0) {
+      handleSelectCity(suggestions[0]);
     }
   };
 
   return (
-    <>
-      <h1>Home</h1>
-      <input
-        type="text"
-        placeholder="Enter a city name..."
-        value={searchText}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-      />
-      <button onClick={handleSearch}>Search</button>
-      {suggestions.length > 0 && (
-        <ul>
-          {suggestions.map((suggest, index) => (
-            <li key={index} onClick={() => handleSuggestionClick(suggest)}>
-              {suggest}
-            </li>
-          ))}
-        </ul>
+    <div>
+      {!isShowHome && (
+        <>
+          <div>
+            <p>
+              Welcome to <span>TypeWeather</span>
+            </p>
+            <p>Choose a location to see the weather forecast</p>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Search location"
+              value={city}
+              onChange={handleChange}
+              onKeyPress={handleKeyPress}
+            />
+            {loading && <div className="spinner">Fetching...</div>}
+          </div>
+          <div>
+            <ul>
+              {suggestions.map((suggestion) => (
+                <li
+                  key={suggestion.id}
+                  onClick={() => handleSelectCity(suggestion)}
+                >
+                  {suggestion.name}, {suggestion.region} - {suggestion.country}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
       )}
-    </>
+      {isShowHome && <Weather city={selectedCity?.name || ""} />}{" "}
+    </div>
   );
 };
 
