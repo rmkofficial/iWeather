@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
@@ -40,6 +39,13 @@ const Home = () => {
     console.log("Selected City:", searchText);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+      setSuggestions([]);
+    }
+  };
+
   return (
     <>
       <h1>Home</h1>
@@ -48,10 +54,9 @@ const Home = () => {
         placeholder="Enter a city name..."
         value={searchText}
         onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
       />
-      <button onClick={handleSearch}>
-        <Link to="/weather">Search</Link>
-      </button>
+      <button onClick={handleSearch}>Search</button>
       {suggestions.length > 0 && (
         <ul>
           {suggestions.map((suggest, index) => (
