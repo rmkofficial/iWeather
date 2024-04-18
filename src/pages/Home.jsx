@@ -4,25 +4,40 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = async (event) => {
     let inputText = event.target.value;
     if (inputText.length > 0) {
       inputText = inputText.charAt(0).toUpperCase() + inputText.slice(1);
     }
     setSearchText(inputText);
-  };
 
-  const handleSearch = async () => {
     const apiKey = "07cf93b699f8470ca8d131206242903";
-    const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchText}&aqi=no`;
+    const autocompleteUrl = `http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${inputText}`;
 
     try {
-      const response = await axios.get(apiUrl);
-      console.log("Weather Information:", response.data);
+      const response = await axios.get(autocompleteUrl);
+      const suggestions = response.data.map((result) => result.name);
+      setSuggestions(suggestions);
     } catch (error) {
-      console.error("Failed to fetch weather information:", error);
+      console.error("Failed to fetch autocomplete suggestions:", error);
+      setSuggestions([]);
     }
+  };
+
+  const handleSuggestionClick = (suggest) => {
+    setSearchText(suggest);
+    setSuggestions([]);
+  };
+
+  const handleSearch = () => {
+    if (!searchText) {
+      console.log("Please enter a city name!");
+      return;
+    }
+
+    console.log("Selected City:", searchText);
   };
 
   return (
@@ -34,9 +49,18 @@ const Home = () => {
         value={searchText}
         onChange={handleInputChange}
       />
-      <Link to="/weather">
-        <button onClick={handleSearch}>Search</button>
-      </Link>
+      <button onClick={handleSearch}>
+        <Link to="/weather">Search</Link>
+      </button>
+      {suggestions.length > 0 && (
+        <ul>
+          {suggestions.map((suggest, index) => (
+            <li key={index} onClick={() => handleSuggestionClick(suggest)}>
+              {suggest}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
