@@ -8,12 +8,21 @@ const Weather = ({ city }) => {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        const API_KEY = "07cf93b699f8470ca8d131206242903";
-        const API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=5&aqi=no&alerts=no`;
+        const API_KEY = "609c0999830243e070dd441cf05ff88b";
+        const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+        const forecastWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=5&appid=${API_KEY}`;
 
-        const response = await axios.get(API_URL);
-        setWeatherData(response.data);
-        console.log("Weather data:", response.data);
+        const currentWeatherResponse = await axios.get(currentWeatherURL);
+
+        const forecastWeatherResponse = await axios.get(forecastWeatherURL);
+
+        setWeatherData({
+          current: currentWeatherResponse.data,
+          forecast: forecastWeatherResponse.data,
+        });
+
+        console.log("Current Weather Data:", currentWeatherResponse.data);
+        console.log("5-Day Forecast Data:", forecastWeatherResponse.data);
       } catch (error) {
         console.error("Error fetching weather data:", error);
         setWeatherData(null);
@@ -25,64 +34,7 @@ const Weather = ({ city }) => {
     }
   }, [city]);
 
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-    return date.toLocaleString("en-US", {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    });
-  };
-
-  return (
-    <>
-      {weatherData && (
-        <div>
-          <div>
-            <div>
-              <p>
-                {weatherData.location.name}, {weatherData.location.country}
-              </p>
-              <p>{formatDate(weatherData.forecast.forecastday[0].date)}</p>
-            </div>
-            <div>
-              <img
-                src={weatherData.current.condition.icon}
-                alt={weatherData.current.condition.text}
-              />
-            </div>
-            <div>
-              <p>Temperature: {weatherData.current.temp_c} °C</p>
-              <p>Condition: {weatherData.current.condition.text}</p>
-            </div>
-          </div>
-          <div>
-            <h3>Weather Details</h3>
-            <p>Feels Like: {weatherData.current.feelslike_c} °C</p>
-            <p>Precipitation: {weatherData.current.precip_mm} mm</p>
-            <p>Wind Speed: {weatherData.current.wind_kph} km/h</p>
-            <p>Humidity: {weatherData.current.humidity} %</p>
-            <p>UV Index: {weatherData.current.uv}</p>
-          </div>
-          <div>
-            {weatherData.forecast.forecastday.map((day) => (
-              <div key={day.date}>
-                <h3>{formatDate(day.date)}</h3>
-                <p>Max Temp: {day.day.maxtemp_c} °C</p>
-                <p>Min Temp: {day.day.mintemp_c} °C</p>
-                <p>Condition: {day.day.condition.text}</p>
-                <img
-                  src={day.day.condition.icon}
-                  alt={day.day.condition.text}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </>
-  );
+  return null;
 };
 
 Weather.propTypes = {
