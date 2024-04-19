@@ -16,7 +16,7 @@ const Weather = ({ city }) => {
   };
 
   const kelvinToCelsius = (kelvin) => {
-    return (kelvin - 273.15).toFixed(1); // Kelvin to Celsius with 1 decimal place
+    return (kelvin - 273.15).toFixed(1);
   };
 
   useEffect(() => {
@@ -60,6 +60,18 @@ const Weather = ({ city }) => {
             src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
             alt={weatherData.weather[0].description}
           />
+
+          <div>
+            <h3>Additional Weather Details</h3>
+            <p>
+              Thermal Sensation: {kelvinToCelsius(weatherData.main.feels_like)}{" "}
+              °C
+            </p>
+            <p>Probability of Rain: {weatherData.main.humidity}%</p>
+            <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+            <p>Air Humidity: {weatherData.main.humidity}%</p>
+            <p>Cloudiness: {weatherData.clouds.all}%</p>
+          </div>
         </div>
       )}
     </div>
