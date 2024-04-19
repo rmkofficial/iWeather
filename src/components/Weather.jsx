@@ -5,24 +5,30 @@ import axios from "axios";
 const Weather = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
 
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+  const kelvinToCelsius = (kelvin) => {
+    return (kelvin - 273.15).toFixed(1); // Kelvin to Celsius with 1 decimal place
+  };
+
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
         const API_KEY = "609c0999830243e070dd441cf05ff88b";
         const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
-        const forecastWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=5&appid=${API_KEY}`;
 
         const currentWeatherResponse = await axios.get(currentWeatherURL);
 
-        const forecastWeatherResponse = await axios.get(forecastWeatherURL);
-
-        setWeatherData({
-          current: currentWeatherResponse.data,
-          forecast: forecastWeatherResponse.data,
-        });
-
+        setWeatherData(currentWeatherResponse.data);
         console.log("Current Weather Data:", currentWeatherResponse.data);
-        console.log("5-Day Forecast Data:", forecastWeatherResponse.data);
       } catch (error) {
         console.error("Error fetching weather data:", error);
         setWeatherData(null);
@@ -34,7 +40,30 @@ const Weather = ({ city }) => {
     }
   }, [city]);
 
-  return null;
+  return (
+    <div>
+      {weatherData && (
+        <div>
+          <h2>
+            Current Weather in {weatherData.name}, {weatherData.sys.country}
+          </h2>
+          <p>{formatDate(weatherData.dt)}</p>
+          <p>Temperature: {kelvinToCelsius(weatherData.main.temp)} °C</p>
+          <p>
+            Max Temperature: {kelvinToCelsius(weatherData.main.temp_max)} °C
+          </p>
+          <p>
+            Min Temperature: {kelvinToCelsius(weatherData.main.temp_min)} °C
+          </p>
+          <p>Weather: {weatherData.weather[0].description}</p>
+          <img
+            src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+            alt={weatherData.weather[0].description}
+          />
+        </div>
+      )}
+    </div>
+  );
 };
 
 Weather.propTypes = {
