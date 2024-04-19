@@ -1,4 +1,6 @@
-import './Home.css';
+import "./Home.css";
+import Logo from "../../public/images/Logo.svg";
+import Type from "../../public/images/Type.svg";
 import { useState } from "react";
 import axios from "axios";
 import Weather from "./Weather";
@@ -55,6 +57,11 @@ const Home = () => {
     <div className="home-container">
       {!isShowHome && (
         <>
+          <div className="logo-container">
+            <img src={Logo} alt="logo" />
+            <span>i</span>
+            <img src={Type} alt="logo" />
+          </div>
           <div>
             <p>
               Welcome to <span>TypeWeather</span>
