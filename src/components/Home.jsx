@@ -62,21 +62,23 @@ const Home = () => {
             <span>i</span>
             <img src={Type} alt="logo" />
           </div>
-          <div>
-            <p>
-              Welcome to <span>TypeWeather</span>
-            </p>
-            <p>Choose a location to see the weather forecast</p>
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Search location"
-              value={city}
-              onChange={handleChange}
-              onKeyPress={handleKeyPress}
-            />
-            {loading && <div className="spinner">Fetching...</div>}
+          <div className="welcome-container">
+            <div className="title-section">
+              <p>
+                Welcome to <span>TypeWeather</span>
+              </p>
+              <p>Choose a location to see the weather forecast</p>
+            </div>
+            <div className="text-section">
+              <input
+                type="text"
+                placeholder="Search location"
+                value={city}
+                onChange={handleChange}
+                onKeyPress={handleKeyPress}
+              />
+              {loading && <div className="spinner">Fetching...</div>}
+            </div>
           </div>
           <div>
             <ul>
