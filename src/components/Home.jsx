@@ -1,6 +1,7 @@
 import "./Home.css";
 import Logo from "../../public/images/Logo.svg";
 import Type from "../../public/images/Type.svg";
+import Spinner from "../../public/images/Spinner.svg";
 import { useState } from "react";
 import axios from "axios";
 import Weather from "./Weather";
@@ -77,21 +78,24 @@ const Home = () => {
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
               />
-              {loading && <div className="spinner">Fetching...</div>}
-              <div className="popover-section">
-                <ul>
-                  {suggestions.map((suggestion) => (
-                    <li
-                      className="frame"
-                      key={suggestion.id}
-                      onClick={() => handleSelectCity(suggestion)}
-                    >
-                      {suggestion.name} -{" "}
-                      {suggestion.country}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {loading && (
+                <div className="spinner">
+                  <img src={Spinner} alt="" />
+                </div>
+              )}
+            </div>
+            <div className="popover-section">
+              <ul>
+                {suggestions.map((suggestion) => (
+                  <li
+                    className="frame"
+                    key={suggestion.id}
+                    onClick={() => handleSelectCity(suggestion)}
+                  >
+                    {suggestion.name} - {suggestion.country}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </>

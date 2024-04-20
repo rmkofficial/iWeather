@@ -68,6 +68,7 @@
   /* text section */
   .text-section {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -79,6 +80,7 @@
     height: 56px;
     border-radius: 8px;
     border: none;
+    position: relative;
   }
   .text-section input[type="text"] {
     font-family: "Nunito", sans-serif;
@@ -94,6 +96,22 @@
     font-size: 16px;
     line-height: 22.4px;
     color: #7f7f98;
+  }
+
+  /* spinner */
+  .spinner {
+    position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 50%;
+  right: 10px; 
+  transform: translateY(-50%);
+  margin-top: 18px;
+  }
+  
+  .spinner img {
+    vertical-align: middle; 
+    background: transparent;
   }
 
   /* popover section */
@@ -148,4 +166,5 @@
   .frame:last-of-type {
     border-radius: 0 0 20px 20px;
   }
+
 }
