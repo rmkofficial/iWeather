@@ -78,19 +78,21 @@ const Home = () => {
                 onKeyPress={handleKeyPress}
               />
               {loading && <div className="spinner">Fetching...</div>}
+              <div className="popover-section">
+                <ul>
+                  {suggestions.map((suggestion) => (
+                    <li
+                      className="frame"
+                      key={suggestion.id}
+                      onClick={() => handleSelectCity(suggestion)}
+                    >
+                      {suggestion.name}, {suggestion.region} -{" "}
+                      {suggestion.country}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-          <div>
-            <ul>
-              {suggestions.map((suggestion) => (
-                <li
-                  key={suggestion.id}
-                  onClick={() => handleSelectCity(suggestion)}
-                >
-                  {suggestion.name}, {suggestion.region} - {suggestion.country}
-                </li>
-              ))}
-            </ul>
           </div>
         </>
       )}

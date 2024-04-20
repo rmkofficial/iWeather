@@ -38,6 +38,7 @@
     padding-top: 192px;
   }
 
+  /* title section */
   .title-section {
     display: flex;
     flex-direction: column;
@@ -63,4 +64,37 @@
     line-height: 19.6px;
     color: #bfbfd4;
   }
+
+  /* text section */
+  .text-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 32px;
+  }
+  .text-section input {
+    background: #1e1e29;
+    width: 311px;
+    height: 56px;
+    border-radius: 8px;
+    border: none;
+  }
+  .text-section input[type="text"] {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #7f7f98;
+    padding-left: 16px;
+  }
+  .text-section input::placeholder {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #7f7f98;
+  }
+  
+  
 }
