@@ -95,6 +95,57 @@
     line-height: 22.4px;
     color: #7f7f98;
   }
-  
-  
+
+  /* popover section */
+  .popover-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popover-section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .frame {
+    width: 311px;
+    height: 54px;
+    padding: 16px 20px;
+    border: 0px;
+    border-bottom: 1px solid #1e1e29;
+    background: #3b3b54;
+    box-shadow: 0px 4px 30px 0px #00000066;
+    margin-top: 8px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #fafafa;
+    animation-name: slideIn;
+    animation-duration: 300ms;
+    animation-timing-function: ease-out;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .frame:hover {
+    background: #48485f;
+  }
+
+  .frame + .frame {
+    margin-top: 1px;
+  }
+
+  .frame:first-of-type {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .frame:last-of-type {
+    border-radius: 0 0 20px 20px;
+  }
 }

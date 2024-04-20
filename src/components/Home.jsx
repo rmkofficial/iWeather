@@ -86,7 +86,7 @@ const Home = () => {
                       key={suggestion.id}
                       onClick={() => handleSelectCity(suggestion)}
                     >
-                      {suggestion.name}, {suggestion.region} -{" "}
+                      {suggestion.name} -{" "}
                       {suggestion.country}
                     </li>
                   ))}
