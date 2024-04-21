@@ -86,15 +86,26 @@ const Weather = ({ city }) => {
 
           {/* Additional Weather Details Section */}
           <div className="detail-section">
-            <h3>Additional Weather Details</h3>
             <p>
               Thermal Sensation:{" "}
-              {kelvinToCelsius(weatherData.current.main.feels_like)} °C
+              <span>
+                {kelvinToCelsius(weatherData.current.main.feels_like)} °C
+              </span>
             </p>
-            <p>Probability of Rain: {weatherData.current.main.humidity}%</p>
-            <p>Wind Speed: {weatherData.current.wind.speed} m/s</p>
-            <p>Air Humidity: {weatherData.current.main.humidity}%</p>
-            <p>Cloudiness: {weatherData.current.clouds.all}%</p>
+            <p>
+              Probability of Rain:
+              <span>{weatherData.current.main.humidity}%</span>{" "}
+            </p>
+            <p>
+              Wind Speed:
+              <span>{weatherData.current.wind.speed} m/s</span>
+            </p>
+            <p>
+              Air Humidity: <span>{weatherData.current.main.humidity}%</span>
+            </p>
+            <p>
+              Cloudiness: <span>{weatherData.current.clouds.all}%</span>
+            </p>
           </div>
 
           {/* Forecast Weather Section */}

@@ -67,11 +67,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-    margin-left: 16px;
+  margin-left: 16px;
 }
 
 .weather-info p {
-    text-align: left;
+  text-align: left;
   margin: 0;
   font-size: 16px;
   font-weight: 400;
@@ -92,4 +92,37 @@
   width: 160px;
   height: 160px;
   margin-left: 40px;
+}
+
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #16161f;
+  width: 359px;
+  height: 292px;
+  margin-top: 6px;
+  padding: 16px;
+  border-radius: 12px;
+  opacity: 0px;
+}
+
+.detail-section p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #bfbfd4;
+  border-bottom: 1px solid #333;
+  padding-bottom: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19.6px;
+}
+
+.detail-section p:first-child {
+  padding-top: 16px;
+}
+
+.detail-section p span {
+  color: #fafafa;
 }
