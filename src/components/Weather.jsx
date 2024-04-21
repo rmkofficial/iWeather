@@ -1,4 +1,4 @@
-import './Weather.css';
+import "./Weather.css";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -54,30 +54,32 @@ const Weather = ({ city }) => {
   return (
     <div className="content-container">
       {weatherData && (
-        <div >
+        <div>
           {/* Current Weather Section */}
           <div className="card-section">
-            <h2>
-              Current Weather in {weatherData.current.name},{" "}
-              {weatherData.current.sys.country}
-            </h2>
-            <p>{formatDate(weatherData.current.dt)}</p>
-            <p>
-              Temperature: {kelvinToCelsius(weatherData.current.main.temp)} °C
-            </p>
-            <p>
-              Max Temperature:{" "}
-              {kelvinToCelsius(weatherData.current.main.temp_max)} °C
-            </p>
-            <p>
-              Min Temperature:{" "}
-              {kelvinToCelsius(weatherData.current.main.temp_min)} °C
-            </p>
-            <p>Weather: {weatherData.current.weather[0].description}</p>
-            <img
-              src={`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}.png`}
-              alt={weatherData.current.weather[0].description}
-            />
+            <div className="today-section">
+              <h2>
+                Current Weather in {weatherData.current.name},{" "}
+                {weatherData.current.sys.country}
+              </h2>
+              <p>{formatDate(weatherData.current.dt)}</p>
+              <p>
+                Temperature: {kelvinToCelsius(weatherData.current.main.temp)} °C
+              </p>
+              <p>
+                Max Temperature:{" "}
+                {kelvinToCelsius(weatherData.current.main.temp_max)} °C
+              </p>
+              <p>
+                Min Temperature:{" "}
+                {kelvinToCelsius(weatherData.current.main.temp_min)} °C
+              </p>
+              <p>Weather: {weatherData.current.weather[0].description}</p>
+              <img
+                src={`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}.png`}
+                alt={weatherData.current.weather[0].description}
+              />
+            </div>
           </div>
 
           {/* Additional Weather Details Section */}
