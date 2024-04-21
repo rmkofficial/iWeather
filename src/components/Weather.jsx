@@ -1,3 +1,4 @@
+import './Weather.css';
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -51,11 +52,11 @@ const Weather = ({ city }) => {
   }, [city]);
 
   return (
-    <div>
+    <div className="content-container">
       {weatherData && (
-        <div>
+        <div >
           {/* Current Weather Section */}
-          <div>
+          <div className="card-section">
             <h2>
               Current Weather in {weatherData.current.name},{" "}
               {weatherData.current.sys.country}
@@ -80,7 +81,7 @@ const Weather = ({ city }) => {
           </div>
 
           {/* Additional Weather Details Section */}
-          <div>
+          <div className="detail-section">
             <h3>Additional Weather Details</h3>
             <p>
               Thermal Sensation:{" "}
@@ -93,7 +94,7 @@ const Weather = ({ city }) => {
           </div>
 
           {/* Forecast Weather Section */}
-          <div>
+          <div className="forecast-section">
             <h3>Forecast Weather</h3>
             {weatherData.forecast.list.map((forecastItem) => (
               <div key={forecastItem.dt}>

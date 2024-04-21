@@ -101,16 +101,16 @@
   /* spinner */
   .spinner {
     position: absolute;
-  width: 26px;
-  height: 26px;
-  top: 50%;
-  right: 10px; 
-  transform: translateY(-50%);
-  margin-top: 18px;
+    width: 26px;
+    height: 26px;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    margin-top: 15px;
   }
-  
+
   .spinner img {
-    vertical-align: middle; 
+    vertical-align: middle;
     background: transparent;
   }
 
@@ -166,5 +166,4 @@
   .frame:last-of-type {
     border-radius: 0 0 20px 20px;
   }
-
 }
