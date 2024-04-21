@@ -27,3 +27,69 @@
   border-radius: 8px;
   opacity: 0px;
 }
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  text-align: left;
+}
+
+.info p {
+  margin: 0;
+}
+
+.info p:first-child {
+  /* font-family: Nunito; */
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22.4px;
+  color: #fafafa;
+}
+
+.info p:last-child {
+  /* font-family: Nunito; */
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16.8px;
+  color: #fafafa;
+}
+
+.weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 65px;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    margin-left: 16px;
+}
+
+.weather-info p {
+    text-align: left;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: #fafafa;
+}
+
+.weather-info p:first-child {
+  /* font-family: Nunito; */
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 57.6px;
+  color: #fafafa;
+  margin-bottom: 10px;
+}
+
+.weather-icon img {
+  width: 160px;
+  height: 160px;
+  margin-left: 40px;
+}

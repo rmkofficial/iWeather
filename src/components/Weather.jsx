@@ -58,27 +58,29 @@ const Weather = ({ city }) => {
           {/* Current Weather Section */}
           <div className="card-section">
             <div className="today-section">
-              <h2>
-                Current Weather in {weatherData.current.name},{" "}
-                {weatherData.current.sys.country}
-              </h2>
-              <p>{formatDate(weatherData.current.dt)}</p>
-              <p>
-                Temperature: {kelvinToCelsius(weatherData.current.main.temp)} °C
-              </p>
-              <p>
-                Max Temperature:{" "}
-                {kelvinToCelsius(weatherData.current.main.temp_max)} °C
-              </p>
-              <p>
-                Min Temperature:{" "}
-                {kelvinToCelsius(weatherData.current.main.temp_min)} °C
-              </p>
-              <p>Weather: {weatherData.current.weather[0].description}</p>
-              <img
-                src={`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}.png`}
-                alt={weatherData.current.weather[0].description}
-              />
+              <div className="info">
+                <p>
+                  {weatherData.current.name}, {weatherData.current.sys.country}
+                </p>
+                <p>{formatDate(weatherData.current.dt)}</p>
+              </div>
+              <div className="weather">
+                <div className="weather-info">
+                  <p>{kelvinToCelsius(weatherData.current.main.temp)}°c</p>
+                  <p>
+                    {" "}
+                    {kelvinToCelsius(weatherData.current.main.temp_min)}°c /
+                    {kelvinToCelsius(weatherData.current.main.temp_max)}°c
+                  </p>
+                  <p>{weatherData.current.weather[0].description}</p>
+                </div>
+                <div className="weather-icon">
+                  <img
+                    src={`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}.png`}
+                    alt={weatherData.current.weather[0].description}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
