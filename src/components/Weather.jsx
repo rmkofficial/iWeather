@@ -91,7 +91,7 @@ const Weather = ({ city }) => {
                 </div>
                 <div className="weather-icon">
                   <img
-                    src={`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}.png`}
+                    src={`https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}.png`}
                     alt={weatherData.current.weather[0].description}
                   />
                 </div>
@@ -134,7 +134,7 @@ const Weather = ({ city }) => {
               <div key={forecastItem.dt}>
                 <p>{formatDayOfWeek(forecastItem.dt)}</p>
                 <img
-                  src={`http://openweathermap.org/img/wn/${forecastItem.weather[0].icon}.png`}
+                  src={`https://openweathermap.org/img/wn/${forecastItem.weather[0].icon}.png`}
                   alt={forecastItem.weather[0].description}
                 />
                 <div className="list">

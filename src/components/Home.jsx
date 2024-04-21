@@ -14,7 +14,7 @@ const Home = () => {
   const [isShowHome, setIsShowHome] = useState(false);
 
   const API_KEY = "07cf93b699f8470ca8d131206242903";
-  const API_URL = "http://api.weatherapi.com/v1/search.json";
+  const API_URL = "https://api.weatherapi.com/v1/search.json";
 
   const handleChange = (event) => {
     let { value } = event.target;
