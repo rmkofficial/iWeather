@@ -33,6 +33,7 @@ const Home = () => {
         })
         .catch((error) => {
           console.error("Error fetching suggestions:", error);
+          alert("Error fetching suggestions. Please try again later.");
         })
         .finally(() => {
           setLoading(false);
@@ -62,7 +63,6 @@ const Home = () => {
           axios
             .get(`${API_URL}?key=${API_KEY}&q=${latitude},${longitude}`)
             .then((response) => {
-              // İlgili konuma göre hava durumu bilgilerini al
               const currentLocationWeather = response.data[0];
               handleSelectCity(currentLocationWeather);
             })
@@ -71,14 +71,24 @@ const Home = () => {
                 "Error fetching weather based on geolocation:",
                 error
               );
+
+              alert(
+                "Error fetching weather based on your location. Please try again later."
+              );
             });
         },
         (error) => {
           console.error("Error getting geolocation:", error);
+
+          alert(
+            "Error getting your location. Please make sure location services are enabled."
+          );
         }
       );
     } else {
       console.log("Geolocation is not supported by this browser.");
+
+      alert("Geolocation is not supported by this browser.");
     }
   };
 
