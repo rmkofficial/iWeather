@@ -1,7 +1,8 @@
 
-# iWeather
+# iWeather - https://i-weather-mu.vercel.app/
 
 Bu proje, React ve Axios gibi teknolojileri kullanarak geliştirilmiş bir hava durumu uygulamasıdır. Uygulama, kullanıcı dostu bir kullanıcı arayüzü sunmak için React'in avantajlarından faydalanmaktadır. Hava durumu verilerini almak için ise OpenWeatherMap ve WeatherAPI servisleri kullanılmıştır.
+
 
 
 ## Özellikler
