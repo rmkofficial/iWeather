@@ -1,4 +1,4 @@
-@media only screen and (max-width: 768px) {
+
   .content-container {
     background-color: #13131a;
     width: 100%;
@@ -151,42 +151,46 @@
     flex: 1;
     text-align: center;
   }
-}
+  .forecast-section img {
+    text-align: center;
+    width: 56px;
+    height: 56px;
+  }
 
-.forecast-section img {
-  text-align: center;
-  width: 56px;
-  height: 56px;
-}
+  .forecast-section p {
+    /* font-family: Nunito; */
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19.6px;
+    text-align: center;
+    color: #bfbfd4;
+    margin-bottom: 0px;
+  }
 
-.forecast-section p {
-  /* font-family: Nunito; */
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 19.6px;
-  text-align: center;
-  color: #bfbfd4;
-  margin-bottom: 0px;
-}
+  .forecast-section .list p:first-child {
+    /* font-family: Nunito; */
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19.6px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: #fafafa;
+  }
 
-.forecast-section .list p:first-child {
-  /* font-family: Nunito; */
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 19.6px;
-  text-align: center;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  color: #fafafa;
-}
+  .forecast-section .list p:last-child {
+    /* font-family: Nunito; */
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19.6px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: #7f7f98;
+  }
 
-.forecast-section .list p:last-child {
-  /* font-family: Nunito; */
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 19.6px;
-  text-align: center;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  color: #7f7f98;
-}
+
+
+
+
+
