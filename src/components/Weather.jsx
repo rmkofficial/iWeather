@@ -53,8 +53,7 @@ const Weather = ({ city }) => {
           forecast: forecastWeatherResponse.data,
         });
 
-        console.log("Current Weather Data:", currentWeatherResponse.data);
-        console.log("Forecast Weather Data:", forecastWeatherResponse.data);
+        
       } catch (error) {
         console.error("Error fetching weather data:", error);
         setWeatherData(null);

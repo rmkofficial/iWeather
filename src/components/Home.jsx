@@ -44,7 +44,6 @@ const Home = () => {
   };
 
   const handleSelectCity = (selectedCity) => {
-    console.log("Selected city:", selectedCity);
     setSelectedCity(selectedCity);
     setIsShowHome(true);
   };
