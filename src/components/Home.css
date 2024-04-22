@@ -187,3 +187,175 @@
     border-radius: 0 0 20px 20px;
   }
 }
+
+@media only screen and (min-width: 769px) {
+  /* Home Container */
+  .home-container {
+    background-image: url("../../public/images/Background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Logo Container */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+    opacity: 0.8;
+  }
+
+  .logo-container span {
+    color: #ffffff;
+    padding-left: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+
+  /* Welcome Container */
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 24px; 
+  }
+
+  /* Title Section */
+  .title-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px; 
+  }
+
+  .title-section p:first-child {
+    margin: 0;
+    font-size: 28px; 
+    font-weight: 700;
+    line-height: 36px;
+    color: #fafafa;
+  }
+
+  .title-section p:first-child span {
+    color: #8fb2f5;
+  }
+
+  .title-section p:last-child {
+    margin-top: 8px; 
+    font-size: 18px; 
+    font-weight: 400;
+    line-height: 24px;
+    color: #bfbfd4;
+  }
+
+  /* Text Section */
+  .text-section {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    padding-top: 1px;
+  }
+
+  .text-section input {
+    width: 400px; 
+    height: 56px;
+    border-radius: 8px;
+    border: none;
+    padding-left: 16px;
+    font-size: 16px;
+    background: #1e1e29;
+  }
+
+  .text-section input[type="text"] {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #7f7f98;
+    padding-left: 16px;
+  }
+
+  /* Spinner */
+  .spinner {
+    display: none;
+  }
+
+  /* Geolocation Button */
+  .geolocation-button {
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .geolocation-button button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #7f7f98;
+    background: #1e1e29;
+    border: 2px solid rgb(106, 106, 156);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(180, 162, 162, 0.1); 
+  }
+
+  .geolocation-button button:hover {
+    background: #48485f;
+    color: #fafafa;
+  }
+
+  /* Popover Section */
+  .popover-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 32px; 
+  }
+
+  .popover-section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .frame {
+    width: 400px; 
+    height: 64px; 
+    padding: 20px;
+    margin-top: 10px; 
+    font-size: 18px;
+    line-height: 24px;
+    background-color: #48485f;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .frame:hover {
+    background: #77778f;
+  }
+
+  .frame + .frame {
+    margin-top: 6px; 
+  }
+
+  .frame:first-of-type {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .frame:last-of-type {
+    border-radius: 0 0 20px 20px;
+  }
+}
