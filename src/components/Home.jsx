@@ -54,6 +54,34 @@ const Home = () => {
     }
   };
 
+  const handleGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          axios
+            .get(`${API_URL}?key=${API_KEY}&q=${latitude},${longitude}`)
+            .then((response) => {
+              // İlgili konuma göre hava durumu bilgilerini al
+              const currentLocationWeather = response.data[0];
+              handleSelectCity(currentLocationWeather);
+            })
+            .catch((error) => {
+              console.error(
+                "Error fetching weather based on geolocation:",
+                error
+              );
+            });
+        },
+        (error) => {
+          console.error("Error getting geolocation:", error);
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  };
+
   return (
     <div className="home-container">
       {!isShowHome && (
@@ -83,6 +111,9 @@ const Home = () => {
                   <img src={Spinner} alt="" />
                 </div>
               )}
+            </div>
+            <div className="geolocation-button">
+              <button onClick={handleGeoLocation}>Current Location</button>
             </div>
             <div className="popover-section">
               <ul>

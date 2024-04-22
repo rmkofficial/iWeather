@@ -114,6 +114,32 @@
     background: transparent;
   }
 
+  /* geolocation button */
+  .geolocation-button {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .geolocation-button button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #7f7f98;
+    background: #1e1e29;
+    border: 1px solid rgb(106, 106, 156);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(180, 162, 162, 0.1); 
+  }
+  
+  
+  
+  
+  
+  
+
   /* popover section */
   .popover-section {
     display: flex;
