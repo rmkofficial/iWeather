@@ -48,7 +48,8 @@ WeatherAPI, hava durumu verileri sağlayan başka bir çevrimiçi hava durumu hi
 
 Vite, uygulamayı http://localhost:3000 adresinde çalıştıracaktır.
 ## Ekran Görüntüleri
-
-![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![ss-1](https://github.com/rmkofficial/iWeather/assets/93156213/36659483-7173-4898-8203-1e2ff61642af)
+![ss-2](https://github.com/rmkofficial/iWeather/assets/93156213/c0f43c30-a6dc-49ca-9fc8-9045c4794ae0)
+![ss-3](https://github.com/rmkofficial/iWeather/assets/93156213/48005b0b-dea6-440e-be5d-12b013638b0d)
 
   
